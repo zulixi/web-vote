@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h2 投票アプリ
+  
+  form(action="/form" method="post")
+    select(name="category")
+      option(value="IT") IT
+      option(value="Web") Web
+      option(value="Game") Game
+      option(value="other") その他 
+    
+    label(for="text") 感想
+    textarea(name="text", cols="30", rows="10")
+    
+    label(for="ok") 公開
+    p 感想をpepperで表示しても構わない場合はチェックを入れてください。
+    input(type="radio" value="ok" name="ok")
+    
+    label(for="参加回数")
+      select(name="times")
+        option(name="once") 一回
+        option(name="twice") 二回
+        option(name="thrice") 三回
+        option(name="more") ４回以上
+    
+    label(for="性別")
+    select(name="gender")
+      option(value="man") 男性
+      option(value="woman") 女性
+      option(value="other") その他
+    
+    label(for="年代")
+    select(name="generation")
+      option(value="eccStudent") eccの学生
+      option(value="student") ecc以外の学生
+      option(value="teacher") 先生
+      option(value="bender") 企業
+      option(value="other") 一般
+    input(type="submit", value="送信")
+    
+    
+    
+    
+      

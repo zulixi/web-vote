@@ -1,30 +1,30 @@
 Arguments: 
-  /home/kei/.nodebrew/node/v8.9.4/bin/node /home/kei/.yarn/bin/yarn.js add sqlite-save
+  /home/kei/.nvm/versions/node/v10.14.2/bin/node /home/kei/.yarn/bin/yarn.js add clan-css@^4.1.11
 
 PATH: 
-  /home/kei/.yarn/bin:/home/kei/.config/yarn/global/node_modules/.bin:/home/kei/.cargo/bin:/home/kei/.nodebrew/current/bin:/home/kei/.local/bin:/home/kei/anaconda3/bin:/home/kei/anaconda3/condabin:/home/kei/.yarn/bin:/home/kei/.config/yarn/global/node_modules/.bin:/home/kei/.cargo/bin:/home/kei/.nodebrew/current/bin:/home/kei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/var/lib/snapd/snap/bin:/snap/bin:/var/lib/snapd/snap/bin:/home/kei/.fzf/bin:/snap/bin:/var/lib/snapd/snap/bin
+  /home/kei/.fzf/bin:/home/kei/.yarn/bin:/home/kei/.config/yarn/global/node_modules/.bin:/home/kei/.yarn/bin:/home/kei/anaconda3/bin:/home/kei/anaconda3/condabin:/home/kei/.config/yarn/global/node_modules/.bin:/home/kei/.nvm/versions/node/v10.14.2/bin:/home/kei/.cargo/bin:/home/kei/.nodebrew/current/bin:/home/kei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/var/lib/snapd/snap/bin:/snap/bin:/var/lib/snapd/snap/bin
 
 Yarn version: 
   1.21.1
 
 Node version: 
-  8.9.4
+  10.14.2
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/sqlite-save: Not found
+  Error: https://registry.yarnpkg.com/clan-css: Not found
       at Request.params.callback [as _callback] (/home/kei/.yarn/lib/cli.js:66947:18)
       at Request.self.callback (/home/kei/.yarn/lib/cli.js:140665:22)
-      at emitTwo (events.js:126:13)
-      at Request.emit (events.js:214:7)
+      at Request.emit (events.js:182:13)
       at Request.<anonymous> (/home/kei/.yarn/lib/cli.js:141637:10)
-      at emitOne (events.js:116:13)
-      at Request.emit (events.js:211:7)
+      at Request.emit (events.js:182:13)
       at IncomingMessage.<anonymous> (/home/kei/.yarn/lib/cli.js:141559:12)
-      at Object.onceWrapper (events.js:313:30)
-      at emitNone (events.js:111:20)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1094:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
@@ -41,6 +41,7 @@ npm manifest:
       "http-errors": "~1.6.2",
       "morgan": "~1.9.0",
       "pug": "2.0.0-beta11",
+      "sqlite-save": "../sqlite-save",
       "sqlite3": "^4.1.1"
     }
   }
@@ -1393,6 +1394,11 @@ Lockfile:
     version "0.5.7"
     resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
     integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
+  
+  sqlite-save@../sqlite-save:
+    version "1.0.0"
+    dependencies:
+      sqlite3 "^4.1.1"
   
   sqlite3@^4.1.1:
     version "4.1.1"

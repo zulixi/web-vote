@@ -21,43 +21,62 @@ for (let i = 0; i < 10; i++) {
     "generation": tmp[3]
   }]);
 
-
-  for(let j = 0; j < genre.length; j++){
+  for (let j = 0; j < genre.length; j++) {
     const promise = new Promise((resolve, reject) => {
       const map = counter.get(genre[j]) || new Map();
 
-    if (map.has(tmp[j])) {
-      map.set(tmp[j], map.get(tmp[j]) + 1);
-    } else {
-      map.set(tmp[j], 1);
-    }
+      if (map.has(tmp[j])) {
+        map.set(tmp[j], map.get(tmp[j]) + 1);
+      } else {
+        map.set(tmp[j], 1);
+      }
 
-    counter.set(genre[j], map);
-    resolve(counter);
+      counter.set(genre[j], map);
+      resolve(counter);
     }).then((data) => {
 
     });
   }
 }
 
-
-
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+  res.redirect('/form')
+  // res.render('index', { title: 'Express' });
 });
-
 
 //GET form page
 router.get('/form', (req, res, next) => {
-  res.render('form');
+  res.render('formDev');
 });
 
 router.post('/form', (req, res, next) => {
   datas.push(req.body);
-  res.redirect('/form');
+  
 
+  setData(genre[0], req.body.category);
+  setData(genre[1], req.body.times);
+  setData(genre[2], req.body.gender);
+  setData(genre[3], req.body.generation);
+  res.render('result');
 });
+
+function setData(str, str2){
+  const promise2 = new Promise((resolve, reject) => {
+    const map = counter.get(str) || new Map();
+
+    if(map.has(str2)){
+      map.set(str2, map.get(str2) +1);
+    }else{
+      map.set(str2, 1);
+    }
+
+    counter.set(str, map);
+    resolve(counter)
+  }).then(data => {
+    console.log(data);
+  })
+}
 
 router.get('/api/v1/vote', (req, res, next) => {
   res.json(datas);
@@ -67,5 +86,40 @@ router.get('/api/v1/counter', (req, res, next) => {
   res.json([...counter].map((kv) => [...kv].map((keyValue) => [...keyValue])));
 });
 
+router.get('/api/v1/cnt', (req, res, next) => {
+  let arr = new Array();
+  //TODO map 
+  // let map = new Map();
+
+  Array.from(counter).map(keyValue => {
+    Array.from(keyValue).map(kv => {
+      let tmp = new Array();
+      let temp = new Array();
+      Array.from(kv).map(item => {
+
+        if (!isNaN(item[1])) {
+          tmp.push(item[1]);
+          temp.push(item[0]);
+        }
+
+      });
+      if (tmp.length > 0) {
+        arr.push([tmp, temp]);
+      }
+    });
+  });
+  // const genre = ["category", "times", "gender", "generation"];
+
+  res.json({
+    "category": arr[0],
+    "times": arr[1],
+    "gender": arr[2],
+    "generation": arr[3]
+  });
+});
+
+router.get('/post', (req, res, next) => {
+  res.render('result');
+});
 
 module.exports = router;

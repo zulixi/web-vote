@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  section.hero.is-primary 
+    .hero-body
+      .container
+        h1.title 投票アプリ
+        h2.subtitle 投票するとPepperの画面に結果を表示します。
+  footer.footer
+    .content
+      .container
+        form(action="/form" method="post")
+          .field
+            label.label カテゴリー
+            .control
+              .select
+                select(name="category")
+                  option(value="IT") IT
+                  option(value="Web") WEB
+                  option(value="Game") GAME
+                  option(value="other") OTHER
+          .field
+            label.label 感想
+            .control
+              textarea.textarea.is-primary(name="text" cols="40" rows="4" placeholder="今回のE展の感想を自由記載" style="resize:vertical; min-width: 100px;")
+            p ※ペッパー上に表示される場合があります。
+          .field
+            label.label E展の参加回数
+            .control
+              .select
+                select(name="times")
+                  option(value="once") １回
+                  option(value="twice") ２回
+                  option(value="thrice") ３回
+                  option(value="more") ４回以上
+          .field
+            label.label 性別
+            .control
+              .select
+                select(name="gender")
+                  option(value="man") 男性
+                  option(value="woman") 女性
+                  option(value="other") その他
+          .field
+            label.label テスト
+            .control
+              .select 
+                select(name="generation")
+                  option(value="eccStudent") ecc学生
+                  option(value="student") ecc以外の学生
+                  option(value="teacher") 先生
+                  option(value="bender") 企業
+                  option(value="other") 一般
+          .field.is-grouped
+            .control
+              button.button.is-link 送信
+            .control
+              button.button.is-link.is-light キャンセル
